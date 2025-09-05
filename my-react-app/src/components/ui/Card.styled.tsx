@@ -31,3 +31,8 @@ export const Overlay = styled.div`
   background: rgba(105, 95, 15, 0.1); /* 반투명 색상 */
   pointer-events: none; /* 클릭 막힘 방지 */
 `;
+
+export const CardContent = styled.div`
+    width: 100%;
+    height: 200px;
+`

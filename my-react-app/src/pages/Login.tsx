@@ -30,7 +30,7 @@ const Login = () => {
   const handleLoginClick = async() => {
     try {
       await auth.logIn(id.value, pw.value);
-      navigate('/My');
+      navigate('/');
     } catch (error) {
       //toast.error((error as Error).message);
     }

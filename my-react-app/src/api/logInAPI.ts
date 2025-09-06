@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const loginUrl = 'http://localhost:3000/api/login';
+const loginUrl = '/api/auth/login ';
 
 export async function logInAPI( email:string, password:string) {
   try {

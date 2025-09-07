@@ -13,8 +13,8 @@ export const NavBar = styled.nav`
     width: 100%;
     max-width: 1280px;
     z-index: 10;
-    background: rgb(241, 239, 233);
-    box-shadow: 0 0 5px 5px #f1efe9;
+    background: ${colors.secondary};
+    box-shadow: 0 0 5px 5px ${colors.secondary};
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 `
@@ -37,13 +37,19 @@ export const NavBarInsideSectionR = styled.div`
   justify-content: flex-end;
 `
 
-export const HeaderMenu = styled.a`
+export const HeaderMenu = styled.div`
     font-size: 12px;
     display: inline-block;
     margin-left: 2.7em;
 `
 export const Title = styled.p`
-  font-size: 20px;
+  font-size: 24px;
   color: ${colors.primary};
   font-weight: 900;
+  caret-color: transparent;
+`
+
+export const IconImg = styled.img`
+  width :24px;
+  height :24px;
 `

@@ -15,7 +15,7 @@ export const NavBar = styled.nav`
     width: 100%;
     max-width: 1280px;
     background: ${colors.secondary};
-    box-shadow: 0 0 5px 5px ${colors.secondary};
+    /*box-shadow: 0 0 5px 5px ${colors.secondary}*/;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 `

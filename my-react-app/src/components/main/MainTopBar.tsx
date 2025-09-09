@@ -3,9 +3,9 @@ import searchIcon from '/img/search.svg'
 import userIcon from '/img/user.svg'
 import menuIcon from '/img/menu.svg'
 import heartIcon from '/img/heart.svg'
-import { HeaderMenu, IconImg, MainTopBarSection, NavBar, NavBarInsideSection,NavBarInsideSectionL, NavBarInsideSectionR, SearchDiv, SearchInput, TextBig, TextSmall, Title } from './MainTopBar.styled'
+import { HeaderMenu, IconImg, LeftAlignBox, MainTopBarSection, NavBar, NavBarInsideSection,NavBarInsideSectionL, NavBarInsideSectionR, SearchDiv, SearchInput, TextBig, TextSmall, Title } from './MainTopBar.styled'
 import { useNavigate } from 'react-router-dom'
-import { BasicBase } from '../../style/common.styled'
+import { BasicBase, Spacer } from '../../style/common.styled'
 
 const MainTopBar = () => {
 
@@ -38,13 +38,16 @@ const MainTopBar = () => {
                         </div>
                     </NavBarInsideSectionR>
                 </NavBar>
-                <SearchDiv>
-                    <TextBig> 블루레이 추천 </TextBig>
-                    <TextSmall> 당신의 인생영화를 찾아보세요! </TextSmall>
-                    <span>
-                        <SearchInput value={item} onChange={(e) => setItem(e.target.value)} placeholder="상품명"/>
-                    </span>
-                </SearchDiv>
+                <Spacer h={10}/>
+                <LeftAlignBox>
+                    <SearchDiv>
+                        <TextBig> 블루레이 추천 </TextBig>
+                        <TextSmall> 당신의 인생영화를 찾아보세요! </TextSmall>
+                        <span>
+                            <SearchInput value={item} onChange={(e) => setItem(e.target.value)} placeholder="상품명"/>
+                        </span>
+                    </SearchDiv>
+                </LeftAlignBox>
             </BasicBase>
         </MainTopBarSection>
     )

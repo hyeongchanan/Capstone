@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import ProductCard from '../components/ProductCard';
 import ProductSimpleList from '../components/ProductSimpleList';
-import { BasicBase, EmptyBox } from '../style/common.styled';
+import { BasicBase, EmptyBox, Spacer } from '../style/common.styled';
 import { ProductsSection } from './Main.styled';
 import MenuBar from '../components/MenuBar';
 import MainTopBar from '../components/main/MainTopBar';
@@ -41,6 +41,7 @@ const Main = () => {
   return (
     <>
       <MainTopBar/>
+      <Spacer h={48}/>
       <BasicBase>
           <ProductSimpleList products={products}/>
       </BasicBase>

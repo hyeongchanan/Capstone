@@ -12,7 +12,7 @@ export const NavBar = styled.nav`
     width: 100%;
     max-width: 1280px;
     z-index: 10;
-    background: rgb(34 132 229);
+    background:${colors.mainBlue};
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 `
@@ -20,10 +20,11 @@ export const NavBar = styled.nav`
 export const MainTopBarSection =styled.div`
     position: relative;
     z-index: 10;
-    height: 320px;
+    height: 360px;
     width: 100vw;
     background-color: rgb(34 132 229);
     top: 0;
+    /*box-shadow: 0 0 5px 5px ${colors.mainBlue}*/;
 `
 
 export const NavBarInsideSection = styled.div`
@@ -63,15 +64,25 @@ export const IconImg = styled.img`
 `
 
 export const SearchInput = styled.input`
-    width: 60vw;
+    width: 80%;
     height: 50px;
     padding: 10px;
     margin-Bottom: 10px;
-    
+    border: none;
+    border-radius: 2px;
 `
+
+export const LeftAlignBox = styled.div`
+    display: flex;
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    width: 100%;
+    padding: 0 32px;
+`
+
 export const SearchDiv = styled.div`
     padding-top: 20px;
     color: white;
+    width: 100%;
 `
 
 export const TextBig = styled.p`

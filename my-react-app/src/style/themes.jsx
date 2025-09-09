@@ -3,5 +3,6 @@ export const colors = {
   secondary:  "#fafafa;",
   accent:     "#282828",
   accent2:    "#2c1805",
-  gray:       "rgb(255, 255, 255)"
+  gray:       "rgb(255, 255, 255)",
+  mainBlue :  "rgb(34 132 229)"
 };

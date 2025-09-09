@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const loginUrl = '/api/auth/login ';
+const loginUrl = '/api/login ';
 
-export async function logInAPI( email:string, password:string) {
+export async function logInAPI( usernameOrEmail:string, password:string) {
   try {
     const response = await axios.post(loginUrl, {
-      email,
+      usernameOrEmail,
       password
     });
     return response.data

@@ -3,6 +3,7 @@ import { login, signup, getMe } from "../api/auth";
 
 export default function LoginPage() {
   const [username, setUsername] = useState('admin');
+  const [email, setEmail] = useState('admin@naver.com');
   const [password, setPassword] = useState('password');
   const [status, setStatus] = useState('');
   const [output, setOutput] = useState('');
@@ -25,7 +26,7 @@ export default function LoginPage() {
     setStatus('⏳ 회원가입 중...');
     setOutput('');
     try {
-      const data = await signup(username, password);
+      const data = await signup(username, email, password);
       setStatus('✅ 회원가입 성공');
       setOutput(JSON.stringify(data, null, 2));
     } catch (err: any) {
@@ -56,6 +57,7 @@ export default function LoginPage() {
     <div style={{ maxWidth: 420, margin: '40px auto', padding: 20, border: '1px solid #e5e7eb', borderRadius: 10, background: '#fff' }}>
       <h1>로그인</h1>
       <input value={username} onChange={(e) => setUsername(e.target.value)} placeholder="아이디" style={{ width: '100%', padding: 10, marginBottom: 10 }} />
+      <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="이메일" style={{ width: '100%', padding: 10, marginBottom: 10 }} />
       <input value={password} onChange={(e) => setPassword(e.target.value)} placeholder="비밀번호" type="password" style={{ width: '100%', padding: 10, marginBottom: 10 }} />
       <div style={{ display: 'flex', gap: 8 }}>
         <button onClick={handleLogin} style={{ flex: 1, padding: 10, background: '#6366f1', color: '#fff' }}>로그인</button>

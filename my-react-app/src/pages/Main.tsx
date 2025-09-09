@@ -4,6 +4,8 @@ import ProductCard from '../components/ProductCard';
 import ProductSimpleList from '../components/ProductSimpleList';
 import { BasicBase, EmptyBox } from '../style/common.styled';
 import { ProductsSection } from './Main.styled';
+import MenuBar from '../components/MenuBar';
+import MainTopBar from '../components/main/MainTopBar';
 
 
 type Product = {
@@ -37,9 +39,12 @@ const Main = () => {
 
   
   return (
-    <BasicBase>
-        <ProductSimpleList products={products}/>
-    </BasicBase>
+    <>
+      <MainTopBar/>
+      <BasicBase>
+          <ProductSimpleList products={products}/>
+      </BasicBase>
+    </>
   )
 }
 

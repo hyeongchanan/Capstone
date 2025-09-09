@@ -16,7 +16,6 @@ function App() {
     <BrowserRouter>
       <GlobalStyle/>
       <MenuBar/>
-      <EmptyBox/>
       <Routes>
         <Route path="/static" element={<Main />} />
         <Route path="/static/Login" element={<Login/>} />

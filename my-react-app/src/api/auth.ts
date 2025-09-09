@@ -5,7 +5,7 @@ axios.defaults.headers.common['Accept'] = 'application/json';
 export const login = async (username: string, password: string) => {
   try {
     const { data } = await axios.post(
-      '/api/auth/login',
+      '/api/login',
       { username, password },
       { headers: { 'Content-Type': 'application/json' } } // 명시적으로 JSON
     );
@@ -16,12 +16,14 @@ export const login = async (username: string, password: string) => {
   }
 };
 
-export const signup = async (username: string, password: string) => {
+export const signup = async (username: string, email: string, password: string) => {
   try {
     const { data } = await axios.post(
-      '/api/auth/signup',
-      { username, password },
-      { headers: { 'Content-Type': 'application/json' } }
+      '/api/signup',
+      { username, email, password },
+      { headers: { 'Content-Type': 'application/json' } 
+      
+    }
     );
     return data;
   } catch (err: any) {
@@ -32,7 +34,7 @@ export const signup = async (username: string, password: string) => {
 
 export const getMe = async (token: string) => {
   try {
-    const { data } = await axios.get('/api/auth/me', {
+    const { data } = await axios.get('/api/me', {
       headers: { Authorization: `Bearer ${token}` },
     });
     return data;

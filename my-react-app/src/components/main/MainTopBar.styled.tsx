@@ -49,7 +49,7 @@ export const NavBarInsideSectionR = styled.div`
 export const HeaderMenu = styled.div`
     font-size: 12px;
     display: inline-block;
-    margin-left: 2.7em;
+    margin-left: 4em;
 `
 export const Title = styled.p`
   font-size: 24px;
@@ -63,13 +63,41 @@ export const IconImg = styled.img`
   height :24px;
 `
 
+export const SearchImg = styled.img`
+  width :32px;
+  height :32px;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+`
+
+export const SearchImgDiv = styled.div`
+  width :auto;
+  height :100%;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+`
+
+
+
 export const SearchInput = styled.input`
     width: 80%;
-    height: 50px;
+    height: 60px;
     padding: 10px;
     margin-Bottom: 10px;
     border: none;
     border-radius: 2px;
+`
+
+export const SearchInputSection =styled.div`
+    width: 80%;
+    height: 60px;
+    padding: 10px;
+    margin-Bottom: 10px;
+    border: none;
+    border-radius: 2px;
+  
 `
 
 export const LeftAlignBox = styled.div`

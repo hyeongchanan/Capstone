@@ -1,11 +1,13 @@
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import ProductCard from '../components/ProductCard';
 import ProductSimpleList from '../components/ProductSimpleList';
 import { BasicBase, EmptyBox, Spacer } from '../style/common.styled';
 import { ProductsSection } from './Main.styled';
 import MenuBar from '../components/MenuBar';
 import MainTopBar from '../components/main/MainTopBar';
+import { ErrorBoundary } from 'react-error-boundary';
+import Loading from '../components/Loading';
 
 
 type Product = {
@@ -43,7 +45,11 @@ const Main = () => {
       <MainTopBar/>
       <Spacer h={48}/>
       <BasicBase>
-          <ProductSimpleList products={products}/>
+        <ErrorBoundary fallback = {<div> 상품을 불러오는중 오류가 발생했습니다 </div>}>
+          <Suspense fallback = {<Loading/>}>
+            <ProductSimpleList/>
+          </Suspense>
+        </ErrorBoundary>
       </BasicBase>
     </>
   )

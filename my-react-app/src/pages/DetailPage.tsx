@@ -5,6 +5,7 @@ export default function DetailPage() {
   const location = useLocation();
   const navigate = useNavigate();
   const product = location.state?.product;
+  console.log(product)
 
   if (!product) {
     return <div>상품 정보를 불러올 수 없습니다.</div>;

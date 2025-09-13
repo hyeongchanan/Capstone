@@ -27,7 +27,7 @@ const MenuBar = () => {
                         <HeaderMenu onClick={() => navigate('static/')}>
                             <IconImg src={heartIcon}  alt="heart" />
                         </HeaderMenu>
-                        <HeaderMenu onClick={() => navigate('static/LoginPage')} >
+                        <HeaderMenu onClick={() => navigate('static/My')} >
                             <IconImg src={userIcon}  alt="my" />
                         </HeaderMenu>
                         <HeaderMenu onClick={() => navigate('static/')}>

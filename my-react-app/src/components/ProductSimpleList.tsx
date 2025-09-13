@@ -1,20 +1,23 @@
 
+import { useEffect, useState } from "react";
 import * as S from "./ProductSimpleList.styled";
 import ProuductCardSimple from "./ProuductCardSimple";
+import { listSales } from "../api/salesAPI";
+import { Product } from "../type/product";
 
-type Product = {
-  id: number;
-  title: string;
-  price: number;
-  originalPrice?: number;
-  discountRate?: number;
-  image: string;
-  mall: string;
-  ad?: boolean;
-  easyPayIcon?: string;
-};
 
-export default function ProductSimpleList({ products }: { products: Product[] }) {
+export default function ProductSimpleList() {
+
+  
+  
+  const [products, setProducts] = useState<Product[]>([]);
+
+
+  useEffect(() => {
+    listSales(10).then(setProducts);
+  }, []);
+  
+
   return (
     <S.Grid>
       {products.map((p) => (

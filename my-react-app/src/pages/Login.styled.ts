@@ -1,72 +1,127 @@
-import styled from '@emotion/styled';
+import styled from "styled-components";
+import { colors } from "../style/themes";
 
-export const MyDiv = styled.div`
-  max-width: 720px;
-  width: 100%;
-  min-height: 100vh;
-  height: 100%;
-  background-color: rgb(255, 255, 255);
-  padding-top: 2.75rem;
-`;
-
-export const LoginMain = styled.main`
-  width: 100%;
-  height: calc(-2.75rem + 100vh);
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #cfcfcfff;
+  position: relative;
 `;
 
-export const KakaoLogo = styled.img`
-  width: 5.5rem;
-  color: rgb(42, 48, 56);
-`;
-export const LoginSection = styled.section`
+export const TopContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
   width: 100%;
-  max-width: 26.25rem;
-  padding: 16px;
-`;
-
-export const InputSection = styled.input<{ hasError?: boolean }>`
-  width: 100%;
-  box-sizing: border-box;
-  color: rgb(42, 48, 56);
-  transition: border-color 200ms;
-  border-style: solid;
-  min-height: 2.75rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.375rem;
-  padding: 8px 0px;
-  border-width: 0px 0px 1px;
-  border-color: ${({ hasError }) => (hasError ? 'red' : 'rgb(220, 222, 227)')};
-  &:focus {
-    outline: none;
-    border-color: ${({ hasError }) => hasError ? 'red' : 'rgb(42, 48, 56)'};
-  }
-  
+  background-color: #cfcfcfff;
+  position: relative;
+  top: 0;
 `;
 
-export const LoginButton = styled.button<{ notVaild?: boolean }>`
+export const BackgroundImage = styled.div`
+  background: url("/chair-blur.jpg") no-repeat center;
+  background-size: cover;
+  opacity: 0.2;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 2.75rem;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.1875rem;
-  color: rgb(42, 48, 56);
-  background-color: rgba(48, 130, 236, 1);
-  border-radius: 4px;
+  height: 100%;
+`;
+
+export const LoginBox = styled.div`
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+`;
+
+export const Title = styled.h1`
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 20px;
+`;
+
+export const Input = styled.input`
+  height: 45px;
   border: none;
-  cursor: ${({notVaild}) => (notVaild?  'not-allowed' :'pointer' ) };
-  opacity: ${({notVaild}) => (notVaild?  '0.5' :'1' ) };
-  transition: background-color 200ms;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  padding: 0 12px;
+  font-size: 14px;
 `;
 
-
-export const ErrorMessage = styled.div`
-  color: red;
-  font-size: 0.75rem;
-  margin-top: 4px;
+export const Button = styled.button`
+  height: 48px;
+  background-color: #0084ffff;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  &:hover {
+    background-color: #0a77e5ff;
+  }
 `;
 
+export const EasyLogin = styled.div`
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  margin-bottom: 20px;
+`;
+
+export const EasyLoginButtons = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 8px;
+
+  img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+  }
+`;
+
+export const BottomBox = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #dcdcdc;
+`;
+
+export const SmallText = styled.span`
+  color: #aaa;
+`;
+
+export const BottomLink = styled.span`
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+export const MeOutput = styled.pre`
+  background: #f4f4f4;
+  border: 1px dashed #bbb;
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 12px;
+  font-size: 12px;
+  white-space: pre-wrap;
+`;
+
+export const LoginForm =styled.form`
+  display: contents;
+`

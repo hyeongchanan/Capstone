@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import searchIcon from '/img/search.svg'
-import userIcon from '/img/user.svg'
-import menuIcon from '/img/menu.svg'
-import heartIcon from '/img/heart.svg'
-import { HeaderMenu, IconImg, LeftAlignBox, MainTopBarSection, NavBar, NavBarInsideSection,NavBarInsideSectionL, NavBarInsideSectionR, SearchDiv, SearchInput, TextBig, TextSmall, Title } from './MainTopBar.styled'
+import searchIcon from '/img/search_w.svg'
+import userIcon from '/img/user_w.svg'
+import menuIcon from '/img/menu_w.svg'
+import heartIcon from '/img/heart_w.svg'
+import { HeaderMenu, IconImg, LeftAlignBox, MainTopBarSection, NavBar, NavBarInsideSection,NavBarInsideSectionL, NavBarInsideSectionR, SearchDiv, SearchImg, SearchImgDiv, SearchInput, SearchInputSection, TextBig, TextSmall, Title } from './MainTopBar.styled'
 import { useNavigate } from 'react-router-dom'
-import { BasicBase, Spacer } from '../../style/common.styled'
+import { BasicBase, LeftAlign, Spacer } from '../../style/common.styled'
 
 const MainTopBar = () => {
 
@@ -29,7 +29,7 @@ const MainTopBar = () => {
                             <HeaderMenu onClick={() => navigate('/static/')}>
                                 <IconImg src={heartIcon}  alt="heart" />
                             </HeaderMenu>
-                            <HeaderMenu onClick={() => navigate('/static/LoginPage')} >
+                            <HeaderMenu onClick={() => navigate('/static/My')} >
                                 <IconImg src={userIcon}  alt="my" />
                             </HeaderMenu>
                             <HeaderMenu onClick={() => navigate('/static/')}>
@@ -43,9 +43,13 @@ const MainTopBar = () => {
                     <SearchDiv>
                         <TextBig> 블루레이 추천 </TextBig>
                         <TextSmall> 당신의 인생영화를 찾아보세요! </TextSmall>
-                        <span>
-                            <SearchInput value={item} onChange={(e) => setItem(e.target.value)} placeholder="상품명"/>
-                        </span>
+                        <LeftAlign>
+                            <SearchInput value={item} onChange={(e) => setItem(e.target.value)} placeholder="상품명"> 
+                            </SearchInput>
+                            <SearchImgDiv>
+                                <SearchImg src={searchIcon}  alt="search" />
+                            </SearchImgDiv>  
+                        </LeftAlign>
                     </SearchDiv>
                 </LeftAlignBox>
             </BasicBase>

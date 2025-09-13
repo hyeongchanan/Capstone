@@ -1,24 +1,20 @@
-
+import { useEffect, useState } from "react";
+import { listMovies } from "../api/movieAPI";
+import * as S from "./ProductList.styled"; // 그대로 재활용 가능
 import ProductCard from "./ProductCard";
-import * as S from "./ProductList.styled";
+import { Movie } from "../type/product";
 
-type Product = {
-  id: number;
-  title: string;
-  price: number;
-  originalPrice?: number;
-  discountRate?: number;
-  image: string;
-  mall: string;
-  ad?: boolean;
-  easyPayIcon?: string;
-};
+export default function ProductList() {
+  const [movies, setMovies] = useState<Movie[]>([]);
 
-export default function ProductList({ products }: { products: Product[] }) {
+  useEffect(() => {
+    listMovies().then(setMovies);
+  }, []);
+
   return (
     <S.List>
-      {products.map((p) => (
-        <ProductCard key={p.id} product={p} />
+      {movies.map((m) => (
+        <ProductCard key={m.id} movie={m} />
       ))}
     </S.List>
   );

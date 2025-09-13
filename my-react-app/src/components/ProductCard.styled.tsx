@@ -14,6 +14,17 @@ export const Card = styled.div`
 
   position: relative;
 `;
+
+
+export const InfoArea = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* 위쪽부터 배치 */
+  gap: 8px;
+`;
+
+
 export const CardSection = styled.div`
   padding: 40px 10px;
   border-bottom: 10px solid #fafafa;
@@ -22,15 +33,13 @@ export const CardSection = styled.div`
 `
 
 export const ImageWrapper = styled.div`
-  flex: 0 0 120px;
-  height: 120px;
+  flex: 0 0 240px;
   margin-right: 16px;
   overflow: hidden;
   border-radius: 2px;
   border: 1px solid #eee;
   padding-top: 0;
-  width: 148px;
-  height: 148px;
+
 `;
 
 export const Image = styled.img`
@@ -47,14 +56,21 @@ export const Areas = styled.div`
 `;
 
 export const Title = styled.div`
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 700;
   color: #333;
   margin-bottom: 8px;
   line-height: 1.4;
   display: -webkit-box;
   -webkit-line-clamp: 2; /* 두 줄 제한 */
   -webkit-box-orient: vertical;
+  overflow: hidden;
+`;
+
+export const Describe = styled.div`
+  font-size: 15px;
+  font-weight: 400;
+  color: #333333;
   overflow: hidden;
 `;
 
@@ -93,12 +109,28 @@ export const Aside = styled.div`
     right: 0;
     bottom: 0;
     width: 186px;
-    border-left: 1px solid #ededed;
+    border-left: 2px solid #e4e4e4;
     padding-top: 1px;
     max-height: inherit;
     padding-left: 24px;
     height: auto;
     margin-top: 0;
+    pointer-events: none;
+`;
+
+
+export const Aside2 = styled.div`
+    position: flex;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 186px;
+    padding-top: 1px;
+    max-height: inherit;
+    padding-left: 42px;
+    height: auto;
+    margin-top: 0;
+    pointer-events: none;
 `;
 
 export const Mall = styled.span`

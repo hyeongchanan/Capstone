@@ -30,7 +30,7 @@ function App() {
           </PrivateRoute>} />
         <Route path="/static/LoginPage" element={<LoginPage/>} />
         <Route path="/static/Signup" element={<Signup/>} />
-        <Route path="/static/SearchPage/:term" element={<SearchPage/>} />
+        <Route path="/static/SearchPage/:keyWord" element={<SearchPage/>} />
         <Route path="/static/DetailPage/:id" element={<DetailPage/>} />
       </Routes>
     </BrowserRouter>

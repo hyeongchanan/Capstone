@@ -10,7 +10,12 @@ import { BasicBase, LeftAlign, Spacer } from '../../style/common.styled'
 const MainTopBar = () => {
 
     const navigate = useNavigate();
-    const [item, setItem] = useState('');
+    const [keyWord, setKeyWord] = useState('');
+    const handleSearch = () => {
+        navigate(`/static/SearchPage/${keyWord}`);
+    };
+
+
     return (
         <MainTopBarSection>
             <BasicBase>
@@ -44,10 +49,10 @@ const MainTopBar = () => {
                         <TextBig> 블루레이 추천 </TextBig>
                         <TextSmall> 당신의 인생영화를 찾아보세요! </TextSmall>
                         <LeftAlign>
-                            <SearchInput value={item} onChange={(e) => setItem(e.target.value)} placeholder="상품명"> 
+                            <SearchInput value={keyWord} onChange={(e) => setKeyWord(e.target.value)} placeholder="상품명"> 
                             </SearchInput>
                             <SearchImgDiv>
-                                <SearchImg src={searchIcon}  alt="search" />
+                                <SearchImg onClick={handleSearch} src={searchIcon}  alt="search" />
                             </SearchImgDiv>  
                         </LeftAlign>
                     </SearchDiv>

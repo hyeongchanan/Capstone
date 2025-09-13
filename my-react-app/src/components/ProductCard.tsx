@@ -1,29 +1,37 @@
 import { useNavigate } from "react-router-dom";
 import * as S from "./ProductCard.styled";
-import { Movie } from "../type/product";
+import { Movie, Product } from "../type/product";
+import { Spacer } from "../style/common.styled";
 
-export default function ProductCard({ movie }: { movie: Movie }) {
+export default function ProductCard({ product }: { product: Product }) {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/static/DetailPage/${movie.id}`, { state: { movie } });
+    navigate(`/static/DetailPage/${product.movieId}`, { state: { product } });
   };
 
   return (
     <S.CardSection>
       <S.Card onClick={handleClick}>
-        <S.Areas>
-          <S.Title>{movie.title}</S.Title>
-          <S.Prices>
-            <S.Price>{movie.releaseDate ? movie.releaseDate.slice(0, 10) : "개봉일 미정"}</S.Price>
-          </S.Prices>
-        </S.Areas>
+        <S.ImageWrapper>
+          <S.Image src={product.imageLink ?? undefined} />
+        </S.ImageWrapper>
 
-        <S.Aside>
-          <S.Mall>{movie.productionCompany}</S.Mall>
-          <S.Mall>{movie.distributionCompany}</S.Mall>
-          <S.Mall>{movie.runningTime}</S.Mall>
-        </S.Aside>
+        <S.InfoArea>
+          <S.Title>{product.blurayTitle}</S.Title>
+          <S.Price>{product.price}원</S.Price>
+          <Spacer h={20}/>
+          <S.Describe> 해상도 : {product.quality}</S.Describe>
+          <S.Describe> 지역 코드 : {product.regionCode}</S.Describe>
+          {product.isLimitedEdition && (
+            <S.Describe>한정판!</S.Describe>
+          )}
+        </S.InfoArea>
+
+        <S.Aside></S.Aside>
+        <S.Aside2>
+          <S.Mall>{product.siteName}</S.Mall>
+        </S.Aside2>
       </S.Card>
     </S.CardSection>
   );

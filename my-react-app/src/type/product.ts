@@ -7,6 +7,8 @@ export type Product = {
   quality: string | null;           // 한 글자 등급(ex. A/B 등)
   regionCode: number | null;        // 리전 코드
   isLimitedEdition: boolean | null; // 한정판 여부
+  imageLink: string | null;         // 상품 이미지 URL
+  blurayTitle: string | null;       // 판매 타이틀(노출용)
 };
 
 export type Movie = {

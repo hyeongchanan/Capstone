@@ -64,8 +64,8 @@ export const IconImg = styled.img`
 `
 
 export const SearchImg = styled.img`
-  width :32px;
-  height :32px;
+  width :40px;
+  height :40px;
   align-items: center;
   justify-content: center;
   padding: 5px;
@@ -76,7 +76,7 @@ export const SearchImgDiv = styled.div`
   height :100%;
   align-items: center;
   justify-content: center;
-  padding: 5px;
+  padding: 8px 5px;
 `
 
 

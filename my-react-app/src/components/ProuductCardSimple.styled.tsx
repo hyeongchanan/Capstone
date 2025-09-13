@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "../style/themes";
 
 export const Card = styled.div`
   border-radius: 2px;
@@ -42,7 +43,7 @@ export const Title = styled.h3`
   color: #333;
   margin-bottom: 6px;
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* 두 줄만 */
+  -webkit-line-clamp: 1; /* 한 줄만 */
   -webkit-box-orient: vertical;
   overflow: hidden;
 `;
@@ -50,6 +51,7 @@ export const Title = styled.h3`
 export const PriceBox = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 6px;
   margin-bottom: 4px;
 `;
@@ -63,7 +65,14 @@ export const Discount = styled.span`
 export const Price = styled.span`
   font-size: 16px;
   font-weight: bold;
-  color: #111;
+  color: ${colors.mainBlue};
+`;
+
+export const Qualty = styled.p`
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  overflow: hidden;
 `;
 
 export const OriginalPrice = styled.span`

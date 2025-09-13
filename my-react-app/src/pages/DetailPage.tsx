@@ -1,42 +1,47 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import * as S from "./DetailPage.styled";
+import { Product } from "../type/product";
+import { usegetMovie } from "../hook/useMovie";
 
 export default function DetailPage() {
   const location = useLocation();
   const navigate = useNavigate();
-  const product = location.state?.product;
+  const product : Product = location.state?.product;
+  const { parm } = useParams<{ parm: string }>();
   console.log(product)
 
   if (!product) {
     return <div>상품 정보를 불러올 수 없습니다.</div>;
   }
 
+    const { data : movie} = usegetMovie(product.movieId ?? 0);
+
   return (
     <S.Container>
       <S.BackButton onClick={() => navigate(-1)}>← 뒤로가기</S.BackButton>
-      <S.Image src={product.image} alt={product.title} />
+      <S.Image src={product.imageLink ?? ''} alt={product.blurayTitle} />
       <S.Info>
-        <S.Title>{product.title}</S.Title>
+        <S.Title>{product.blurayTitle}</S.Title>
+        <S.Title>{movie.title}</S.Title>
         <S.Prices>
-          {product.discountRate && <S.Discount>{product.discountRate}%</S.Discount>}
-          <S.Price>{product.price.toLocaleString()}원</S.Price>
-          {product.originalPrice && (
-            <S.OriginalPrice>{product.originalPrice.toLocaleString()}원</S.OriginalPrice>
-          )}
+          <S.Discount>%</S.Discount>
+          <S.Price>{product.price}원</S.Price>
         </S.Prices>
-        <S.Mall>{product.mall}</S.Mall>
+        <S.Mall>{product.siteName}</S.Mall>
       </S.Info>
 
       {/* 작품 소개 */}
       <S.Section>
         <h2>설명</h2>
-        <S.Meta>{product.description || "작품 소개 텍스트 영역"}</S.Meta>
+        <S.Meta>{movie.runningTime}</S.Meta>
+        <S.Meta>{movie.director || "작품 소개 텍스트 영역"}</S.Meta>
       </S.Section>
 
       {/* 디스크 스펙 */}
       <S.Section>
         <h2>디스크 스펙</h2>
-        <S.Meta>{product.spec || "해상도, 오디오, 자막, 부가영상 등"}</S.Meta>
+        <S.Meta>{product.quality || "해상도, 오디오, 자막, 부가영상 등"}</S.Meta>
+        <S.Meta>{product.regionCode}</S.Meta>
       </S.Section>
 
       {/* 리뷰 */}

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   max-width: 1200px;
-  width : 100%;
+  width: 100%;
   margin: 0 auto;
   padding: 20px;
 `;
@@ -22,20 +22,6 @@ export const Image = styled.img`
   object-fit: cover;
 `;
 
-export const ImageContainer = styled.div`
-    width: 700px;
-    padding: 30px;
-    background-color: white;
-    height: auto;
-    display: flex;              /* flex 컨테이너 */
-    justify-content: center;    /* 가로 가운데 정렬 */
-    align-items: center;        /* 세로 가운데 정렬 */
-`;
-
-export const Info = styled.div`
-  margin-top: 16px;
-`;
-
 export const Title = styled.h1`
   font-size: 20px;
   font-weight: 600;
@@ -49,22 +35,10 @@ export const Prices = styled.div`
   margin-bottom: 12px;
 `;
 
-export const Discount = styled.span`
-  font-size: 16px;
-  font-weight: bold;
-  color: #ef4444;
-`;
-
 export const Price = styled.span`
   font-size: 22px;
   font-weight: bold;
   color: #111;
-`;
-
-export const OriginalPrice = styled.span`
-  font-size: 16px;
-  color: #999;
-  text-decoration: line-through;
 `;
 
 export const Mall = styled.span`
@@ -72,41 +46,10 @@ export const Mall = styled.span`
   color: #555;
 `;
 
-// DetailPage.styled.ts 계속 이어서 작성
-
-export const Section = styled.section`
-  margin-top: 32px;
-  padding-top: 16px;
-  border-top: 1px solid #eee;
-
-  h2 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 12px;
-  }
-`;
-
 export const Meta = styled.div`
   font-size: 14px;
   color: #444;
   line-height: 1.5;
-`;
-
-export const RatingGroup = styled.div`
-  display: flex;
-  gap: 12px;
-
-  label {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    cursor: pointer;
-    font-size: 14px;
-
-    input {
-      cursor: pointer;
-    }
-  }
 `;
 
 export const RatingHelp = styled.div`
@@ -133,3 +76,102 @@ export const Card = styled.div`
   color: #555;
 `;
 
+export const TopSection = styled.div`
+  display: flex;
+  gap: 2px;
+  margin-bottom: 2px;
+  align-items: stretch;
+`;
+
+export const ImageContainer = styled.div`
+  width: 600px;
+  padding: 20px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Info = styled.div`
+  flex: 1;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+`;
+
+export const Section = styled.section`
+  margin-top: 2px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+
+  h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+`;
+
+/* 📌 상세정보 표 */
+export const Table = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+
+  th {
+    width: 120px;
+    text-align: left;
+    padding: 8px;
+    background-color: #f5f5f5;
+    font-weight: 600;
+    font-size: 14px;
+    border: 1px solid #ddd;
+  }
+
+  td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+  }
+`;
+
+/* 📌 리뷰 작성 Form */
+export const ReviewForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+`;
+
+export const RatingSelect = styled.select`
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+`;
+
+export const ReviewInput = styled.textarea`
+  resize: none;
+  min-height: 80px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+`;
+
+export const SubmitButton = styled.button`
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+
+  &:hover {
+    background-color: #1d4ed8;
+  }
+`;

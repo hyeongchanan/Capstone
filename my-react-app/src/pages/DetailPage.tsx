@@ -2,6 +2,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import * as S from "./DetailPage.styled";
 import { Product } from "../type/product";
 import { usegetMovie } from "../hook/useMovie";
+import { BasicBase, Spacer } from "../style/common.styled";
 
 export default function DetailPage() {
   const location = useLocation();
@@ -17,9 +18,13 @@ export default function DetailPage() {
     const { data : movie} = usegetMovie(product.movieId ?? 0);
 
   return (
-    <S.Container>
+    <BasicBase>
+      <Spacer h={110}/>
+      <S.Container>
       <S.BackButton onClick={() => navigate(-1)}>← 뒤로가기</S.BackButton>
-      <S.Image src={product.imageLink ?? ''} alt={product.blurayTitle} />
+      <S.ImageContainer>
+       <S.Image src={product.imageLink ?? ''} />
+      </S.ImageContainer>
       <S.Info>
         <S.Title>{product.blurayTitle}</S.Title>
         <S.Title>{movie.title}</S.Title>
@@ -96,6 +101,7 @@ export default function DetailPage() {
           ))}
         </S.Grid>
       </S.Section>
-    </S.Container>
+      </S.Container>
+    </BasicBase>
   );
 }

@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  max-width: 800px;
+  max-width: 1200px;
+  width : 100%;
   margin: 0 auto;
   padding: 20px;
 `;
@@ -19,7 +20,16 @@ export const Image = styled.img`
   width: 100%;
   height: auto;
   object-fit: cover;
-  border-radius: 12px;
+`;
+
+export const ImageContainer = styled.div`
+    width: 700px;
+    padding: 30px;
+    background-color: white;
+    height: auto;
+    display: flex;              /* flex 컨테이너 */
+    justify-content: center;    /* 가로 가운데 정렬 */
+    align-items: center;        /* 세로 가운데 정렬 */
 `;
 
 export const Info = styled.div`

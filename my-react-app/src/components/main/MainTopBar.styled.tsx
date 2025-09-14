@@ -104,7 +104,7 @@ export const LeftAlignBox = styled.div`
     display: flex;
     justify-content: flex-start; /* 왼쪽 정렬 */
     width: 100%;
-    padding: 0 32px;
+    padding: 0 48px;
 `
 
 export const SearchDiv = styled.div`

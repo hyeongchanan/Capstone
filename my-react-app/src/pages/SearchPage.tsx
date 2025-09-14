@@ -12,7 +12,7 @@ export default function SearchPage() {
 
   return (
     <BasicBase>
-      <Spacer h={100}/>
+      <Spacer h={110}/>
       <ErrorBoundary fallback ={
         <div> 오류 발생
       </div>}>

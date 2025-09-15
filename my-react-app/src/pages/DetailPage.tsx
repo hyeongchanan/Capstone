@@ -1,3 +1,4 @@
+// DetailPage.tsx
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import * as S from "./DetailPage.styled";
 import { Product } from "../type/product";
@@ -28,6 +29,43 @@ export default function DetailPage() {
     alert("리뷰가 등록되었습니다! (mock)");
     setRating(0);
     setReviewMsg("");
+  };
+
+  // ⭐ 별 렌더링
+  const renderStars = (value: number, onClick?: (v: number) => void) => {
+    return (
+      <S.StarsWrapper>
+        {[1, 2, 3, 4, 5].map((star) => {
+          if (value >= star) {
+            return (
+              <span
+                key={star}
+                className="full"
+                onClick={() => onClick?.(star)}
+              >
+                ★
+              </span>
+            );
+          } else if (value >= star - 0.5) {
+            return (
+              <span
+                key={star}
+                className="half"
+                onClick={() => onClick?.(star - 0.5)}
+              >
+                ★
+              </span>
+            );
+          } else {
+            return (
+              <span key={star} onClick={() => onClick?.(star)}>
+                ★
+              </span>
+            );
+          }
+        })}
+      </S.StarsWrapper>
+    );
   };
 
   return (
@@ -90,19 +128,7 @@ export default function DetailPage() {
           {/* ⭐ 리뷰 작성 Form */}
           <S.ReviewForm onSubmit={handleReviewSubmit}>
             <label>별점:</label>
-            <S.RatingSelect
-              value={rating}
-              onChange={(e) => setRating(parseFloat(e.target.value))}
-            >
-              {[...Array(10)].map((_, i) => {
-                const val = (i + 1) * 0.5;
-                return (
-                  <option key={val} value={val}>
-                    {val} 점
-                  </option>
-                );
-              })}
-            </S.RatingSelect>
+            {renderStars(rating, (val) => setRating(val))}
 
             <S.ReviewInput
               placeholder="리뷰를 작성해주세요..."
@@ -132,7 +158,6 @@ export default function DetailPage() {
                 공식 사이트
               </a>
             </div>
-            <S.RatingHelp>가격/재고는 해당 사이트에서 확인하세요.</S.RatingHelp>
           </S.Meta>
         </S.Section>
 

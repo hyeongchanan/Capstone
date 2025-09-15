@@ -41,7 +41,7 @@ export const Label = styled.label`
 
 export const Input = styled.input`
   margin-top: 6px;
-  min-width: 300px;
+  min-width: 350px;
   padding: 10px;
   background-color: #e7e7e7ff;
   font-size: 14px;

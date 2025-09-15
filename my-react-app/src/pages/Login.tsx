@@ -133,6 +133,8 @@ const Login = () => {
             <BottomLink onClick={() => navigate("/static/Signup")}>
               회원가입
             </BottomLink>
+          </BottomBox>
+            {/* 여기는 JSX 내부 주석입니다 
             <BottomLink onClick={handleMe}>
               me
             </BottomLink>
@@ -142,6 +144,7 @@ const Login = () => {
           </BottomBox>
 
           <MeOutput>{meInfo}</MeOutput>
+          */}
         </LoginBox>
       </Container>
     </NoMenuBar>

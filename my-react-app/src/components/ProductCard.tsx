@@ -29,9 +29,9 @@ export default function ProductCard({ product }: { product: Product }) {
         </S.InfoArea>
 
         <S.Aside></S.Aside>
-        <S.Aside2>
+        <S.Aside>
           <S.Mall>{product.siteName}</S.Mall>
-        </S.Aside2>
+        </S.Aside>
       </S.Card>
     </S.CardSection>
   );

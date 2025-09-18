@@ -8,6 +8,7 @@ import MenuBar from '../components/MenuBar';
 import MainTopBar from '../components/main/MainTopBar';
 import { ErrorBoundary } from 'react-error-boundary';
 import Loading from '../components/Loading';
+import RecommendedList from './RecommendedList';
 
 
 type Product = {
@@ -45,7 +46,7 @@ const Main = () => {
               <ProductSimpleList />
             </Suspense>
           </ErrorBoundary>
-
+        <RecommendedList/>
       </BasicBase>
 
     </>

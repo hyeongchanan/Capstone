@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Product } from "../type/product";
-import * as S from "./ProuductCardSimple.styled";
+import * as S from "./ProductCardSimple.styled";
 
 
 

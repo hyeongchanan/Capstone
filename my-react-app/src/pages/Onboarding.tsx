@@ -1,105 +1,148 @@
-// OnboardingPage.tsx
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useState, useRef, useEffect, useMemo } from "react";
+import * as S from "./Onboarding.styled";
+import { useListSales, useSearchSale } from "../hook/useSales";
+import { useNavigate } from "react-router-dom";
+import OnboardingCard from "../components/OnboardingCard";
+import ProductCard from "../components/ProductCard";
 
-// Mock 데이터
-const bluRays = [
-  { id: 1, title: "Inception", img: "/img/inception.jpg" },
-  { id: 2, title: "Avatar", img: "/img/avatar.jpg" },
-  { id: 3, title: "The Matrix", img: "/img/matrix.jpg" },
-  { id: 4, title: "Interstellar", img: "/img/interstellar.jpg" },
-  { id: 5, title: "Avengers", img: "/img/avengers.jpg" },
-  { id: 6, title: "Titanic", img: "/img/titanic.jpg" },
-  { id: 7, title: "Jurassic Park", img: "/img/jurassic.jpg" },
-];
+export default function Onboarding() {
+  const { data: products } = useListSales(20);
+  const [selectedIds, setSelectedIds] = useState<number[]>([]);
+  const navigate = useNavigate();
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isAutoScrolling, setIsAutoScrolling] = useState(true);
+  
+  // 검색 관련 상태
+  const [searchKeyword, setSearchKeyword] = useState('');
+  const [isSearching, setIsSearching] = useState(false);
+  const { data: searchResults } = useSearchSale(searchKeyword);
 
-export default function OnboardingPage() {
-  const [selected, setSelected] = useState<number[]>([]);
+  // 카드를 6개씩 그룹으로 나누고 화면을 꽉 채우도록 무한 순환
+  const flowingProducts = useMemo(() => {
+    if (!products || products.length === 0) return [];
+    
+    // 6개씩 그룹으로 나누기
+    const groups = [];
+    for (let i = 0; i < products.length; i += 6) {
+      groups.push(products.slice(i, i + 6));
+    }
+    
+    // 각 그룹을 충분히 반복해서 화면을 꽉 채우도록 (8번 반복)
+    return groups.map((group, groupIndex) => ({
+      products: [...group, ...group, ...group, ...group, ...group, ...group, ...group, ...group], // 8번 반복
+      direction: groupIndex % 2 === 0 ? 'right' : 'left' // 짝수 줄은 오->왼, 홀수 줄은 왼->오
+    }));
+  }, [products]);
 
   const toggleSelect = (id: number) => {
-    setSelected((prev) => {
-      if (prev.includes(id)) {
-        return prev.filter((x) => x !== id);
-      } else if (prev.length < 10) { // 최대 10개
-        return [...prev, id];
-      }
-      return prev;
-    });
+    setSelectedIds(
+      (prev) =>
+        prev.includes(id)
+          ? prev.filter((pid) => pid !== id)
+          : prev.length < 5
+          ? [...prev, id]
+          : prev // 5개까지만 선택 가능
+    );
   };
 
-  const isValidSelection = selected.length >= 5;
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const width = scrollRef.current.clientWidth;
+      scrollRef.current.scrollBy({
+        left: direction === "right" ? width : -width,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  // 마우스 이벤트 제거 - 계속 순환하도록
+
+  // 검색 핸들러
+  const handleSearch = () => {
+    if (!searchKeyword.trim()) return;
+    setIsSearching(true);
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
+  const handleComplete = () => {
+    console.log("선택 완료:", selectedIds);
+    // 여기서 API 호출 또는 상태 저장 후 다음 페이지 이동
+    navigate("/");
+  };
 
   return (
-    <Container>
-      <Title>블루레이를 선택해주세요 (5~10개)</Title>
-      <Grid>
-        {bluRays.map((b) => (
-          <Card
-            key={b.id}
-            selected={selected.includes(b.id)}
-            onClick={() => toggleSelect(b.id)}
+    <S.OnboardingWrapper>
+      <S.Title>좋아하는 영화를 선택해주세요 (최대 5개)</S.Title>
+      <S.SelectedCount>
+        {selectedIds.length}/5 선택됨
+      </S.SelectedCount>
+      
+      <S.FlowingContainer>
+        {flowingProducts.map((group, groupIndex) => (
+          <S.FlowingRow 
+            key={groupIndex}
+            direction={group.direction}
           >
-            <img src={b.img} alt={b.title} />
-            <p>{b.title}</p>
-          </Card>
+            {group.products.map((p, index) => (
+              <OnboardingCard
+                key={`${p.id}-${index}`}
+                product={p}
+                isSelected={selectedIds.includes(p.id)}
+                onClick={() => toggleSelect(p.id)}
+              />
+            ))}
+          </S.FlowingRow>
         ))}
-      </Grid>
-      <Button disabled={!isValidSelection}>
-        선택 완료 ({selected.length})
-      </Button>
-    </Container>
+      </S.FlowingContainer>
+
+      <S.CompleteButton
+        disabled={selectedIds.length === 0}
+        onClick={handleComplete}
+      >
+        완료 ({selectedIds.length}/5)
+      </S.CompleteButton>
+
+      {/* 검색 섹션 */}
+      <S.SearchSection>
+        <S.SearchTitle>원하는 영화를 직접 검색해보세요</S.SearchTitle>
+        <S.SearchBoxWrapper>
+          <S.SearchInput
+            type="text"
+            value={searchKeyword}
+            onChange={(e) => setSearchKeyword(e.target.value)}
+            placeholder="영화 제목을 입력하세요"
+            onKeyDown={handleKeyPress}
+          />
+          <S.SearchButton onClick={handleSearch}>
+            검색
+          </S.SearchButton>
+        </S.SearchBoxWrapper>
+        
+        {isSearching && searchResults && (
+          <S.SearchResults>
+            <S.SearchResultsTitle>검색 결과</S.SearchResultsTitle>
+            {searchResults.length === 0 ? (
+              <S.NoResults>검색 결과가 없습니다</S.NoResults>
+            ) : (
+              <S.SearchGrid>
+                {searchResults.map((product) => (
+                  <OnboardingCard
+                    key={product.id}
+                    product={product}
+                    isSelected={selectedIds.includes(product.id)}
+                    onClick={() => toggleSelect(product.id)}
+                  />
+                ))}
+              </S.SearchGrid>
+            )}
+          </S.SearchResults>
+        )}
+      </S.SearchSection>
+    </S.OnboardingWrapper>
   );
 }
-
-// Styled-components
-const Container = styled.div`
-  padding: 32px;
-  text-align: center;
-`;
-
-const Title = styled.h2`
-  margin-bottom: 24px;
-`;
-
-const Grid = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-content: center;
-`;
-
-const Card = styled.div<{ selected: boolean }>`
-  width: 150px;
-  cursor: pointer;
-  border: 2px solid ${(props) => (props.selected ? "#0484FF" : "#ccc")};
-  border-radius: 8px;
-  padding: 8px;
-  transition: all 0.2s;
-
-  img {
-    width: 100%;
-    border-radius: 4px;
-  }
-
-  p {
-    margin-top: 8px;
-    font-size: 14px;
-  }
-
-  &:hover {
-    transform: scale(1.05);
-    border-color: #0484ff;
-  }
-`;
-
-const Button = styled.button`
-  margin-top: 24px;
-  padding: 12px 24px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: none;
-  background-color: #0484ff;
-  color: white;
-  cursor: pointer;
-  opacity: ${(props) => (props.disabled ? 0.5 : 1)};
-`;

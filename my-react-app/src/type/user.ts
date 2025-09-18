@@ -3,7 +3,7 @@ export interface UserToken {
 }
 
 
-type RecommandRes = {
+export type RecommendedItem = {
   userId: number;
   results: Array<{
     movieId: number | null;

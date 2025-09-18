@@ -1,12 +1,11 @@
 import styled from "styled-components";
+import { colors } from "../style/themes";
 
 export const CardSection = styled.div`
   margin: 10px;
 `;
 
 export const Card = styled.div`
-  padding 10px;
-  width 10px;
   display: flex;
   align-items: flex-start;
   background: #fff;
@@ -69,9 +68,9 @@ export const Describe = styled.div`
 `;
 
 export const Price = styled.span`
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
-  color: #111;
+  color: ${colors.mainDeepBlue};
 `;
 
 export const Aside = styled.div`

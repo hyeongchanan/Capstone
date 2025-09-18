@@ -42,22 +42,30 @@ export const Label = styled.label`
 export const Input = styled.input`
   margin-top: 6px;
   min-width: 350px;
-  padding: 10px;
-  background-color: #e7e7e7ff;
-  font-size: 14px;
   height: 45px;
-  border: none;
-  border-radius: 4px;
-  margin-bottom: 12px;
   padding: 0 12px;
   font-size: 14px;
+  background-color: #e7e7e7ff;
+  border: 2px solid rgba(0, 60, 120, 0); /* 기본은 투명 */
+  border-radius: 4px;
+  margin-bottom: 12px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: rgba(0, 60, 120, 0.3);
+  }
 
   &:focus {
-    border-color: ${colors.mainBlue};
     outline: none;
-    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    border-color: ${colors.mainDeepBlue}; /* 포커스 시 강조 */
+  }
+
+  &:active {
+    transform: scale(0.98); /* 클릭 감각 */
   }
 `;
+
+
 
 export const Button = styled.button`
   margin-top: 25px;

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "../style/themes";
 
 export const ProductsSection = styled.div`
   display: grid;
@@ -24,17 +25,10 @@ export const ProductsSection = styled.div`
 export const SubTitle = styled.p`
   font-size: 24px;            /* 메인보다는 살짝 작은 크기 */
   font-weight: 500;            /* 적당히 강조 */
-  color: #153970ff;                 /* 부드러운 다크 그레이 */
+  color: ${colors.mainDeepBlue};                 /* 부드러운 다크 그레이 */
   text-align: left;            /* 왼쪽 정렬 */
   margin: 0 0 16px 0;          /* 아래 여백으로 카드와 분리 */
   line-height: 1.5;            /* 읽기 좋은 줄 높이 */
   letter-spacing: 0.2px;       /* 서브 타이틀 느낌 강조 */
   padding-left : 20px
-`;
-
-export const ListWrapper = styled.div`
-  background: #ffffffff;
-  padding: 16px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  margin-bottom: 24px;
 `;

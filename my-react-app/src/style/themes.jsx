@@ -4,5 +4,6 @@ export const colors = {
   accent:     "#282828",
   accent2:    "#2c1805",
   gray:       "rgb(255, 255, 255)",
-  mainBlue :  "rgb(34 132 229)"
+  mainBlue :  "rgb(34 132 229)",
+  mainDeepBlue : "rgba(28, 118, 207, 1);"
 };

@@ -2,10 +2,10 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  max-width: 1100px;
+  max-width: 1300px;
   width: 100%;
-  margin: 0 auto;
-  padding: 40px 20px;
+  padding: 50px;
+  background-color: white;
 
 `;
 
@@ -35,7 +35,7 @@ export const TopSection = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-  width: 480px;
+  width: 560px;
   flex-shrink: 0;
   img {
     width: 100%;
@@ -50,6 +50,7 @@ export const Info = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  padding-left: 50px;
 `;
 
 export const Title = styled.h1`

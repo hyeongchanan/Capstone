@@ -52,13 +52,23 @@ export const Title = styled.h1`
 
 export const Input = styled.input`
   height: 45px;
-  border: none;
+  border: 2px solid rgba(0, 60, 120, 0); /* 기본은 투명 */
   border-radius: 4px;
   margin-bottom: 12px;
   padding: 0 12px;
   font-size: 14px;
-`;
+  transition: all 0.2s ease;
 
+  &:hover {
+    border: 2px solid rgba(0, 60, 120, 0.3); /* 부드럽게 나타남 */
+  }
+
+  &:focus {
+    outline: none; /* 포커스 기본 테두리 제거 */
+    border-color: ${colors.mainDeepBlue}; /* 클릭/포커스 시 강조 */
+    transform: scale(0.98);
+  }
+`;
 export const Button = styled.button`
   height: 48px;
   background-color: #0084ffff;

@@ -8,17 +8,21 @@ export const Info = styled.div`
   bottom: 0;
   left: 0;
   width: 100%;
-  background: rgba(19, 39, 75, 0.6);
+  background: rgba(0, 132, 255, 0.6);
   color: #fff;
-  padding: 12px;
+  padding: 20px 12px 12px 12px;
   box-sizing: border-box;
-  transform: translateY(100%); /* 처음엔 화면 밖으로 숨김 */
+  transform: translateY(100%);
   opacity: 0;
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   gap: 4px;
+
+  mask-image: linear-gradient(to top, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
 `;
+
 
 
 export const Card = styled.div`

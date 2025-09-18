@@ -28,7 +28,7 @@ export const NavBarInsideSectionR = styled.div`
   align-items: center;
   flex: 1;
   justify-content: flex-end;
-  gap: 24px;
+  gap: 48px;
 `;
 
 export const HeaderMenu = styled.div`

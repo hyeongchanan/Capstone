@@ -71,8 +71,7 @@ export default function DetailPage() {
   return (
     <BasicBase>
       <S.Container>
-        <Spacer h={110} />
-        <S.BackButton onClick={() => navigate(-1)}>← 뒤로가기</S.BackButton>
+        <Spacer h={30} />
 
         {/* 상단: 이미지 + 정보 */}
         <S.TopSection>

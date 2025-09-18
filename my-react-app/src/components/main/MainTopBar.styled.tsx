@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { colors } from "../../style/themes";
+import styled from 'styled-components';
+import { colors } from '../../style/themes';
 
 export const MainTopBarSection = styled.div`
   position: relative;
@@ -10,8 +10,7 @@ export const MainTopBarSection = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-
-  clip-path: ellipse(120% 80% at 48% 0%);
+  transition: clip-path 0.2s ease-out;
 `;
 
 export const NavBar = styled.nav`
@@ -33,7 +32,7 @@ export const NavBarInsideSectionL = styled.div`
 export const NavBarInsideSectionR = styled.div`
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 48px;
 `;
 
 export const HeaderMenu = styled.div`
@@ -97,7 +96,7 @@ export const SearchInput = styled.input`
   border: none;
   outline: none;
   font-size: 16px;
-  box-shadow: inset 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.1);
 `;
 
 export const SearchImgDiv = styled.div`

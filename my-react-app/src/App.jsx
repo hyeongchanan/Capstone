@@ -13,6 +13,7 @@ import { AuthProvider } from './context/AuthContext'
 import PrivateRoute from './routes/PrivateRoute'
 import My from './pages/My'
 import Signup from './pages/Signup'
+import Onboarding from './pages/Onboarding'
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
         <Route path="/static/Signup" element={<Signup/>} />
         <Route path="/static/SearchPage/:keyWord" element={<SearchPage/>} />
         <Route path="/static/DetailPage/:id" element={<DetailPage/>} />
+        <Route path="/static/Onboarding" element={<Onboarding/>} />
       </Routes>
     </BrowserRouter>
     </AuthProvider>

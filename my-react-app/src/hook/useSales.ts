@@ -21,5 +21,8 @@ export function useSearchSale(query: string) {
   return useSuspenseQuery<Product[], Error>({
     queryKey: ["SearchSale", query],
     queryFn: () => searchSales(query),
+    enabled: !!query, // query가 있을 때만 실행
+    staleTime: 5 * 60 * 1000, // 5분간 캐시 유지
+    cacheTime: 10 * 60 * 1000, // 10분간 메모리에 유지
   });
 }

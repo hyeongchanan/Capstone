@@ -8,7 +8,7 @@ interface OnboardingCardProps {
   onClick: () => void;
 }
 
-export default function OnboardingCard({ product, isSelected, onClick }: OnboardingCardProps) {
+const OnboardingCard = React.memo(({ product, isSelected, onClick }: OnboardingCardProps) => {
   return (
     <S.Card 
       isSelected={isSelected}
@@ -24,12 +24,12 @@ export default function OnboardingCard({ product, isSelected, onClick }: Onboard
           <S.Price>{product.price?.toLocaleString()}원</S.Price>
           <S.Quality>해상도: {product.quality}</S.Quality>
         </S.PriceBox>
-        {product.isLimitedEdition && (
-          <S.OriginalPrice>한정판!</S.OriginalPrice>
-        )}
-        <S.Mall>{product.siteName}</S.Mall>
       </S.Info>
       {isSelected && <S.Checkmark>✓</S.Checkmark>}
     </S.Card>
   );
-}
+});
+
+OnboardingCard.displayName = 'OnboardingCard';
+
+export default OnboardingCard;

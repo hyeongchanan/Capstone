@@ -4,18 +4,12 @@ import { colors } from "../style/themes";
 export const Card = styled.div<{ isSelected: boolean }>`
   position: relative;
   width: 200px;
-  height: 320px;
-  background: white;
+  height: 300px;
+  background: #a2535370;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: ${props => props.isSelected ? `3px solid ${colors.mainBlue}` : "2px solid #e5e7eb"};
-  box-shadow: ${props => 
-    props.isSelected 
-      ? "0 8px 25px rgba(79, 70, 229, 0.3)" 
-      : "0 2px 8px rgba(0, 0, 0, 0.1)"
-  };
-  overflow: visible;
+  overflow: hidden;
   flex-shrink: 0;
   z-index: 1;
   transform: ${props => props.isSelected ? "scale(0.95)" : "scale(1)"};
@@ -26,8 +20,6 @@ export const Card = styled.div<{ isSelected: boolean }>`
         ? "translateY(-6px) scale(0.95)" 
         : "translateY(-8px) scale(1.05)"
     };
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-    border-color: ${colors.mainBlue};
     z-index: 10;
   }
 
@@ -44,9 +36,9 @@ export const Card = styled.div<{ isSelected: boolean }>`
 export const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
-  height: 200px;
+  height: 100%;
   overflow: hidden;
-  border-radius: 8px 8px 0 0;
+  border-radius: 12px;
 `;
 
 export const Image = styled.img`
@@ -71,99 +63,55 @@ export const SelectedOverlay = styled.div`
 `;
 
 export const Info = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   padding: 16px;
-  height: 120px;
+  background: transparent;
+  border-radius: 0 0 12px 12px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
+  gap: 8px;
+  transition: all 0.3s ease;
+
+  ${Card}:hover & {
+    background: linear-gradient(transparent, rgba(0, 132, 255, 0.6));
+  }
 `;
 
 export const Title = styled.h3`
   font-size: 14px;
   font-weight: 600;
-  color: #1f2937;
-  margin: 0 0 8px 0;
+  color: white;
+  margin: 0;
   line-height: 1.3;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 4px 8px;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-  background: transparent;
-
-  ${Card}:hover & {
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(4px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
 `;
 
 export const PriceBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
-  margin-bottom: 8px;
 `;
 
 export const Price = styled.span`
   font-size: 16px;
   font-weight: 700;
-  color: ${colors.mainBlue};
-  padding: 2px 6px;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-  background: transparent;
-
-  ${Card}:hover & {
-    background: rgba(79, 70, 229, 0.1);
-    backdrop-filter: blur(2px);
-  }
+  color: #ffffff;
 `;
 
 export const Quality = styled.span`
   font-size: 12px;
-  color: #6b7280;
+  color: #e5e7eb;
   font-weight: 500;
-  padding: 2px 6px;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-  background: transparent;
-
-  ${Card}:hover & {
-    background: rgba(107, 114, 128, 0.1);
-    backdrop-filter: blur(2px);
-  }
 `;
 
-export const OriginalPrice = styled.span`
-  font-size: 12px;
-  color: #ef4444;
-  font-weight: 600;
-  background: #fef2f2;
-  padding: 2px 6px;
-  border-radius: 4px;
-  display: inline-block;
-  margin-bottom: 8px;
-`;
-
-export const Mall = styled.span`
-  font-size: 12px;
-  color: #9ca3af;
-  font-weight: 500;
-  margin-top: auto;
-  padding: 2px 6px;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-  background: transparent;
-
-  ${Card}:hover & {
-    background: rgba(156, 163, 175, 0.1);
-    backdrop-filter: blur(2px);
-  }
-`;
 
 export const Checkmark = styled.div`
   position: absolute;
@@ -185,11 +133,11 @@ export const Checkmark = styled.div`
   
   @keyframes checkmarkAppear {
     0% {
-      transform: scale(0) rotate(180deg);
+      transform: scale(0) rotate(45deg);
       opacity: 0;
     }
     50% {
-      transform: scale(1.2) rotate(90deg);
+      transform: scale(1.2) rotate(22deg);
     }
     100% {
       transform: scale(1) rotate(0deg);
